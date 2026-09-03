@@ -5,6 +5,7 @@
 
 export * from './boot';
 export * from './workflows';
+export * from './workspace';
 
 export type DataState =
   | 'loading'

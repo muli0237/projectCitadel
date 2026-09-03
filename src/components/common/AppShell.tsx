@@ -18,9 +18,8 @@ import { TerminalDeck } from '../modules/TerminalDeck/TerminalDeck';
 import { ToolboxModule } from '../modules/Toolbox/ToolboxModule';
 import { DevOpsBay } from '../modules/DevOpsBay/DevOpsBay';
 import { CodeLab } from '../modules/CodeLab/CodeLab';
-import { DataLab } from '../modules/DataLab/DataLab';
+import { DataAndNotesWorkspace } from '../modules/Workspace/DataAndNotesWorkspace';
 import { SystemMonitor } from '../modules/SystemMonitor/SystemMonitor';
-import { NotesRunbooks } from '../modules/NotesRunbooks/NotesRunbooks';
 import { SettingsModule } from '../modules/Settings/SettingsModule';
 
 export const AppShell: React.FC = () => {
@@ -67,11 +66,11 @@ export const AppShell: React.FC = () => {
       case 'code-lab':
         return <CodeLab />;
       case 'data-lab':
-        return <DataLab />;
+        return <DataAndNotesWorkspace initialSection="DATA_LAB" />;
       case 'system-monitor':
         return <SystemMonitor />;
       case 'notes-runbooks':
-        return <NotesRunbooks />;
+        return <DataAndNotesWorkspace initialSection="NOTES_RUNBOOKS" />;
       case 'settings':
         return <SettingsModule />;
       default:
