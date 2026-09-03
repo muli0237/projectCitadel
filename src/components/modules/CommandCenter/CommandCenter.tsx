@@ -26,6 +26,7 @@ import {
   ToolchainSnapshot,
 } from '../../../types';
 import { FloatingWorkspaceWindow } from '../../common/FloatingWorkspaceWindow';
+import { APP_ICONS, AppIcon, IconButton, type AppIconName } from '../../common/AppIcon';
 
 // Subpanel modules
 import { OverviewPanel } from './panels/OverviewPanel';
@@ -52,22 +53,22 @@ export type PanelSection =
 interface NavSectionItem {
   id: PanelSection;
   label: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: AppIconName;
   status?: string;
   statusVariant?: 'emerald' | 'cyan' | 'amber' | 'rose' | 'slate' | 'violet';
   disabled?: boolean;
 }
 
 const NAV_SECTIONS: NavSectionItem[] = [
-  { id: 'overview', label: 'Overview', icon: LayoutDashboard, status: 'ONLINE', statusVariant: 'emerald' },
-  { id: 'projects', label: 'Projects', icon: FolderGit2, status: 'ACTIVE', statusVariant: 'cyan' },
-  { id: 'terminal', label: 'Terminal', icon: Terminal, status: 'PTY READY', statusVariant: 'emerald' },
-  { id: 'storage', label: 'Storage', icon: HardDrive, status: 'ENCRYPTED', statusVariant: 'cyan' },
-  { id: 'logs', label: 'Logs', icon: FileText, status: 'STREAMING', statusVariant: 'cyan' },
-  { id: 'diagnostics', label: 'Diagnostics', icon: Activity, status: 'HEALTHY', statusVariant: 'emerald' },
-  { id: 'devops', label: 'DevOps', icon: Container, status: 'UNAVAILABLE', statusVariant: 'amber' },
-  { id: 'datalab', label: 'Data Lab', icon: Database, status: 'UNAVAILABLE', statusVariant: 'amber' },
-  { id: 'settings', label: 'Settings', icon: Settings, status: 'CONFIGURED', statusVariant: 'slate' },
+  { id: 'overview', label: 'Overview', icon: 'overview', status: 'ONLINE', statusVariant: 'emerald' },
+  { id: 'projects', label: 'Projects', icon: 'projects', status: 'ACTIVE', statusVariant: 'cyan' },
+  { id: 'terminal', label: 'Terminal', icon: 'terminal', status: 'PTY READY', statusVariant: 'emerald' },
+  { id: 'storage', label: 'Storage', icon: 'storage', status: 'ENCRYPTED', statusVariant: 'cyan' },
+  { id: 'logs', label: 'Logs', icon: 'file', status: 'STREAMING', statusVariant: 'cyan' },
+  { id: 'diagnostics', label: 'Diagnostics', icon: 'activity', status: 'HEALTHY', statusVariant: 'emerald' },
+  { id: 'devops', label: 'DevOps', icon: 'container', status: 'UNAVAILABLE', statusVariant: 'amber' },
+  { id: 'datalab', label: 'Data Lab', icon: 'database', status: 'UNAVAILABLE', statusVariant: 'amber' },
+  { id: 'settings', label: 'Settings', icon: 'settings', status: 'CONFIGURED', statusVariant: 'slate' },
 ];
 
 export const CommandCenter: React.FC = () => {
@@ -151,18 +152,17 @@ export const CommandCenter: React.FC = () => {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             AIR-GAP ACTIVE
           </span>
-          <button
+          <IconButton
+            icon="refresh"
+            label="Refresh telemetry"
             onClick={() => {
               loadData();
               refreshSystemMetrics();
               refreshDriveHealth();
             }}
-            className="p-1.5 text-slate-400 hover:text-cyan-300 hover:bg-slate-800/80 rounded transition-colors cursor-pointer"
-            title="Refresh Enclave Telemetry"
-            aria-label="Refresh telemetry"
-          >
-            <RefreshCw className="w-3.5 h-3.5" />
-          </button>
+            className="text-slate-400 hover:bg-slate-800/80 hover:text-cyan-300"
+            iconClassName="size-3.5"
+          />
         </div>
       </header>
 
@@ -242,7 +242,6 @@ export const CommandCenter: React.FC = () => {
           className="flex items-center flex-wrap justify-center gap-1.5 sm:gap-2 p-1.5 bg-[#050b18]/90 border border-slate-700/80 rounded-xl shadow-2xl backdrop-blur-md"
         >
           {NAV_SECTIONS.map((item) => {
-            const Icon = item.icon;
             const isSelected = activePanel === item.id;
 
             return (
@@ -262,9 +261,11 @@ export const CommandCenter: React.FC = () => {
                 )}
               >
                 <div className="w-5 h-5 flex items-center justify-center shrink-0">
-                  <Icon
+                  <AppIcon
+                    name={item.icon}
+                    aria-hidden="true"
                     className={clsx(
-                      'w-4 h-4 transition-colors',
+                      'size-4 transition-colors',
                       isSelected ? 'text-cyan-400' : 'text-slate-400'
                     )}
                   />
@@ -283,7 +284,7 @@ export const CommandCenter: React.FC = () => {
           title={currentNav.label}
           sectionStatus={currentNav.status}
           statusVariant={currentNav.statusVariant}
-          icon={currentNav.icon}
+          icon={APP_ICONS[currentNav.icon]}
           isOpen={true}
           onClose={closePanel}
           triggerRef={{ current: triggerRefs.current[activePanel] || null }}
