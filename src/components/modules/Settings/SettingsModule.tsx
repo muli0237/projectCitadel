@@ -90,7 +90,7 @@ export const SettingsModule: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-transparent text-slate-200 relative">
+    <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-transparent text-slate-200 relative font-sans">
       <div className="relative z-10 space-y-6">
         {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#0d1017]/90 border border-gray-800/80 rounded-md p-4 backdrop-blur-md shadow-xl">

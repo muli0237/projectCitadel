@@ -77,7 +77,7 @@ export const StopContainerModal: React.FC<StopContainerModalProps> = ({
               <Square className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-sm font-bold font-oxanium text-white uppercase tracking-wider">
+              <h2 className="text-sm font-bold font-sans text-white uppercase tracking-wider">
                 Halt Workload // Stop Container
               </h2>
               <div className="flex items-center gap-2 mt-0.5">

@@ -305,7 +305,7 @@ export const ToolboxModule: React.FC = () => {
               </div>
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <h1 className="text-base sm:text-lg font-oxanium font-bold text-white uppercase tracking-[0.15em]">
+                  <h1 className="text-base sm:text-lg font-sans font-bold text-white uppercase tracking-[0.15em]">
                     Security Toolbox & Forensic Arsenal
                   </h1>
                   <StatusPill status="healthy" label="REGISTRY VERIFIED" />
@@ -491,7 +491,7 @@ export const ToolboxModule: React.FC = () => {
             {filteredTools.length === 0 ? (
               <div className="p-8 text-center bg-[#071126] border border-cyan-500/20 rounded-md space-y-3">
                 <AlertTriangle className="w-8 h-8 text-amber-400 mx-auto opacity-75" />
-                <h3 className="text-sm font-oxanium font-bold text-white uppercase">
+                <h3 className="text-sm font-sans font-bold text-white uppercase">
                   No Arsenal Tools Match Query
                 </h3>
                 <p className="text-xs font-mono text-slate-400 max-w-sm mx-auto">
@@ -601,7 +601,7 @@ export const ToolboxModule: React.FC = () => {
                 <div className="flex items-start justify-between gap-3 pb-3 border-b border-cyan-950">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="text-base font-bold font-oxanium text-white">
+                      <h3 className="text-base font-bold font-sans text-white">
                         {selectedTool.name}
                       </h3>
                       <span className="text-[10px] font-mono px-1.5 py-0.2 bg-cyan-950 text-cyan-300 border border-cyan-500/30">

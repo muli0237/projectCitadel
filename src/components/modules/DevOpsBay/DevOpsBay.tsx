@@ -267,7 +267,7 @@ export const DevOpsBay: React.FC = () => {
   return (
     <div
       id="devops-bay-root"
-      className="flex-1 overflow-y-auto p-4 md:p-6 bg-transparent text-slate-200 relative"
+      className="flex-1 overflow-y-auto p-4 md:p-6 bg-transparent text-slate-200 relative font-sans"
     >
       <div className="relative z-10 space-y-6">
         {/* 1. DevOps Tactical Header */}
@@ -284,7 +284,7 @@ export const DevOpsBay: React.FC = () => {
               </div>
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h1 className="text-base sm:text-lg font-oxanium font-bold text-white uppercase tracking-[0.15em]">
+                  <h1 className="text-base sm:text-lg font-sans font-bold text-white uppercase tracking-[0.15em]">
                     DevOps Container Bay // Orchestration & Sandbox
                   </h1>
                   <StatusPill status="healthy" label="DAEMON ACTIVE" pulse />
@@ -569,7 +569,7 @@ export const DevOpsBay: React.FC = () => {
                   <div className="bg-[#071126] border border-cyan-500/30 rounded-md p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="text-sm font-bold font-oxanium text-white tracking-wide">
+                        <h3 className="text-sm font-bold font-sans text-white tracking-wide">
                           {selectedContainer.name}
                         </h3>
                         <StatusPill

@@ -64,7 +64,7 @@ export const DeleteContainerModal: React.FC<DeleteContainerModalProps> = ({
               <Trash2 className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-sm font-bold font-oxanium text-white uppercase tracking-wider">
+              <h2 className="text-sm font-bold font-sans text-white uppercase tracking-wider">
                 Purge Container // Destructive Removal
               </h2>
               <div className="flex items-center gap-2 mt-0.5">

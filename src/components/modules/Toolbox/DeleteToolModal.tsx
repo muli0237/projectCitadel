@@ -49,7 +49,7 @@ export const DeleteToolModal: React.FC<DeleteToolModalProps> = ({
               <AlertTriangle className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-sm font-oxanium font-bold text-white uppercase tracking-wider">
+              <h2 className="text-sm font-sans font-bold text-white uppercase tracking-wider">
                 Unregister Tool from Arsenal
               </h2>
               <span className="text-[10px] font-mono text-rose-300">

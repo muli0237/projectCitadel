@@ -271,7 +271,7 @@ export const RunContainerDialog: React.FC<RunContainerDialogProps> = ({
               <Play className="w-5 h-5 fill-emerald-400" />
             </div>
             <div>
-              <h2 className="text-sm font-bold font-oxanium text-white uppercase tracking-wider">
+              <h2 className="text-sm font-bold font-sans text-white uppercase tracking-wider">
                 Deploy & Run Container // Launchpad
               </h2>
               <div className="flex items-center gap-2 mt-0.5">

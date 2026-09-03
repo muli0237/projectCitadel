@@ -84,7 +84,7 @@ export const DataLab: React.FC = () => {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-base sm:text-lg font-oxanium font-bold text-white uppercase tracking-[0.15em]">
+                <h1 className="text-base sm:text-lg font-sans font-bold text-white uppercase tracking-[0.15em]">
                   Data Lab & Telemetry Pipelines
                 </h1>
                 <StatusPill status="healthy" label="UV COMPILED" />

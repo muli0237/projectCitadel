@@ -203,7 +203,7 @@ export const NotesRunbooks: React.FC = () => {
   const selectedNote = notes.find((n) => n.id === selectedNoteId);
 
   return (
-    <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-transparent text-slate-200 relative">
+    <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-transparent text-slate-200 relative font-sans">
       <div className="relative z-10 space-y-6">
         {/* 1. CyberGuard Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#071126]/90 border border-cyan-500/30 rounded-md p-5 shadow-xl backdrop-blur-md">
@@ -213,7 +213,7 @@ export const NotesRunbooks: React.FC = () => {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-base sm:text-lg font-oxanium font-bold text-white uppercase tracking-[0.15em]">
+              <h1 className="text-base sm:text-lg font-sans font-bold text-white uppercase tracking-[0.15em]">
                 Runbooks, Checklists & Tactical Notes
               </h1>
               <StatusPill status="healthy" label="ENCRYPTED LOCAL" />
@@ -303,7 +303,7 @@ export const NotesRunbooks: React.FC = () => {
                     setEditTitle(e.target.value);
                     setIsSaved(false);
                   }}
-                  className="bg-transparent border-none text-base font-bold font-oxanium text-white focus:outline-hidden flex-1"
+                  className="bg-transparent border-none text-base font-bold font-sans text-white focus:outline-hidden flex-1"
                   placeholder="Runbook Title..."
                 />
 

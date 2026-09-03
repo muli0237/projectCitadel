@@ -288,7 +288,7 @@ export const NewToolDialog: React.FC<NewToolDialogProps> = ({
               <Wrench className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-sm font-oxanium font-bold text-white uppercase tracking-wider">
+              <h2 className="text-sm font-sans font-bold text-white uppercase tracking-wider">
                 Register Tool in Tactical Arsenal
               </h2>
               <p className="text-[10px] font-mono text-cyan-400">
