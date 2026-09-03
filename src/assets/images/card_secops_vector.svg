@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="secops-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050e1f" />
+      <stop offset="100%" stop-color="#0b1e3d" />
+    </linearGradient>
+    <linearGradient id="shield-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+    <pattern id="sec-grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#00f0ff" stroke-width="0.5" stroke-opacity="0.1" />
+    </pattern>
+  </defs>
+
+  <rect width="400" height="160" fill="url(#secops-grad)" />
+  <rect width="400" height="160" fill="url(#sec-grid)" />
+
+  <!-- Shield Matrix Centerpiece -->
+  <g transform="translate(200, 75)">
+    <!-- Outer Scanning Ring -->
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#00f0ff" stroke-opacity="0.15" stroke-dasharray="4,4" />
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#f43f5e" stroke-opacity="0.25" stroke-dasharray="8,6" />
+    
+    <!-- Shield Outline -->
+    <path d="M 0,-32 L 28,-18 L 28,10 Q 28,32 0,44 Q -28,32 -28,10 L -28,-18 Z" 
+          fill="#061224" fill-opacity="0.8" stroke="url(#shield-stroke)" stroke-width="2" />
+    
+    <!-- Inner Lock / Keyhole Core -->
+    <path d="M 0,-18 L 16,-8 L 16,8 Q 16,22 0,30 Q -16,22 -16,8 L -16,-8 Z" 
+          fill="none" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.8" />
+    <circle cx="0" cy="0" r="5" fill="#00f0ff" fill-opacity="0.9" />
+    <path d="M -2,0 L 2,0 L 3,12 L -3,12 Z" fill="#00f0ff" fill-opacity="0.9" />
+
+    <!-- Threat Vector Lines -->
+    <line x1="-120" y1="-25" x2="-55" y2="0" stroke="#f43f5e" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="3,3" />
+    <circle cx="-120" cy="-25" r="3" fill="#f43f5e" />
+    <line x1="120" y1="20" x2="55" y2="0" stroke="#00f0ff" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="3,3" />
+    <circle cx="120" cy="20" r="3" fill="#00f0ff" />
+  </g>
+
+  <!-- Corner Brackets -->
+  <path d="M 8,20 L 8,8 L 20,8" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.6" />
+  <path d="M 392,20 L 392,8 L 380,8" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.6" />
+  <path d="M 8,140 L 8,152 L 20,152" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-opacity="0.6" />
+  <path d="M 392,140 L 392,152 L 380,152" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.6" />
+</svg>

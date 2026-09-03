@@ -1,0 +1,12 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Default capabilities for Citadel Portable Operations Workspace",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "shell:default",
+    "fs:default",
+    "dialog:default"
+  ]
+}

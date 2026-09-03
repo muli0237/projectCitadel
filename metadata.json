@@ -1,0 +1,6 @@
+{
+  "name": "Citadel",
+  "description": "Citadel - Portable Operations Workspace for Kali Linux and portable storage. Tactical, unified cybersecurity, DevOps, development and data-science operations console.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

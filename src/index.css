@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------- */
+/* LOCALLY HOSTED OFFLINE WOFF2 FONT SYSTEM (NO CDN DEPENDENCIES)             */
+/* -------------------------------------------------------------------------- */
+
+/* Interface Display & Body Font: Space Grotesk (400, 500, 600, 700) */
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+
+/* Terminal, Telemetry, Log & Metric Font: JetBrains Mono (400, 500, 600, 700) */
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
+@import "@fontsource/jetbrains-mono/700.css";
+
+@layer base {
+  :root {
+    /* Interface typography with fallback stacks */
+    --font-interface: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-terminal: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+
+    /* Refined Calm Observability Palette (Dark Blue-Black Foundation) */
+    --obs-void: #030712;
+    --obs-base: #060d1d;
+    --obs-surface: #0a1428;
+    --obs-surface-elevated: #0f1c36;
+    --obs-border-subtle: rgba(148, 163, 184, 0.08);
+    --obs-border-medium: rgba(148, 163, 184, 0.16);
+    --obs-border-active: rgba(6, 182, 212, 0.45);
+    
+    /* Subtle Accents */
+    --obs-cyan: #06b6d4;
+    --obs-cyan-bright: #22d3ee;
+    --obs-violet: #8b5cf6;
+    --obs-emerald: #10b981;
+    --obs-amber: #f59e0b;
+    --obs-rose: #f43f5e;
+    --obs-text-primary: #f1f5f9;
+    --obs-text-secondary: #94a3b8;
+    --obs-text-muted: #64748b;
+  }
+
+  body {
+    font-family: var(--font-interface);
+    background-color: var(--obs-void);
+    color: var(--obs-text-primary);
+    overflow: hidden;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* TYPOGRAPHY HIERARCHY & UTILITIES                                           */
+/* -------------------------------------------------------------------------- */
+
+.font-interface,
+.font-sans,
+.font-body {
+  font-family: var(--font-interface);
+}
+
+.font-terminal,
+.font-mono,
+.font-tech,
+.font-jetbrains {
+  font-family: var(--font-terminal);
+  font-variant-ligatures: none;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Tabular Numerals for Telemetry, Metrics, Timestamps & Logs */
+.tabular-nums,
+.font-metric,
+.telemetry-num,
+.tabular-data,
+[data-tabular="true"] {
+  font-family: var(--font-terminal);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/* ACCESSIBILITY & FOCUS OUTLINES                                            */
+/* -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* TACTICAL XTERM TRANSLUCENCY OVERRIDES & HIGH-CONTRAST TERMINAL STYLING     */
+/* -------------------------------------------------------------------------- */
+
+.terminal-window-glass {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.xterm,
+.xterm .xterm-viewport,
+.xterm .xterm-screen,
+.xterm-rows {
+  background-color: transparent !important;
+}
+
+.xterm {
+  font-family: var(--font-terminal) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.xterm .xterm-screen {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9));
+}
+
+.xterm .xterm-viewport {
+  overflow-y: auto !important;
+  background-color: transparent !important;
+}
+
+/* Glowing terminal accents */
+.text-glow-cyan {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6), 0 0 16px rgba(0, 240, 255, 0.25);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.6), 0 0 16px rgba(245, 158, 11, 0.25);
+}
+
+/* -------------------------------------------------------------------------- */
+/* REFINED CUSTOM SCROLLBARS                                                  */
+/* -------------------------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* -------------------------------------------------------------------------- */
+/* SUBTLE ATMOSPHERIC OVERLAYS                                                */
+/* -------------------------------------------------------------------------- */
+
+.obs-card {
+  background-color: #081122;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 8px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.obs-card:hover {
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+.obs-card-active {
+  background-color: #0b172e;
+  border-color: rgba(6, 182, 212, 0.4);
+}

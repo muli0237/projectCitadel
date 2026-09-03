@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <defs>
+    <linearGradient id="codeGrad" x1="0" y1="0" x2="400" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#07122a" />
+      <stop offset="50%" stop-color="#0a1a38" />
+      <stop offset="100%" stop-color="#040814" />
+    </linearGradient>
+    <linearGradient id="cyanLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.1" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.1" />
+    </linearGradient>
+    <linearGradient id="emeraldLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="240" fill="url(#codeGrad)" rx="8" />
+
+  <!-- Grid lines -->
+  <path d="M20 40h360M20 80h360M20 120h360M20 160h360M20 200h360" stroke="#1e293b" stroke-width="1" stroke-dasharray="3 6" />
+  <path d="M60 20v200M120 20v200M180 20v200M240 20v200M300 20v200M360 20v200" stroke="#1e293b" stroke-width="1" stroke-dasharray="3 6" />
+
+  <!-- Code Structure Matrix -->
+  <rect x="30" y="30" width="160" height="180" rx="4" fill="#040a17" stroke="#0ea5e9" stroke-opacity="0.4" stroke-width="1" />
+  <circle cx="45" cy="45" r="3" fill="#ef4444" />
+  <circle cx="55" cy="45" r="3" fill="#eab308" />
+  <circle cx="65" cy="45" r="3" fill="#22c55e" />
+  <text x="80" y="48" fill="#64748b" font-family="monospace" font-size="9">main.rs // AST</text>
+
+  <!-- Code Syntax Lines -->
+  <rect x="45" y="65" width="70" height="6" rx="2" fill="#38bdf8" fill-opacity="0.7" />
+  <rect x="120" y="65" width="40" height="6" rx="2" fill="#818cf8" fill-opacity="0.5" />
+  
+  <rect x="55" y="80" width="50" height="6" rx="2" fill="#34d399" fill-opacity="0.8" />
+  <rect x="110" y="80" width="60" height="6" rx="2" fill="#64748b" fill-opacity="0.4" />
+
+  <rect x="55" y="95" width="90" height="6" rx="2" fill="#38bdf8" fill-opacity="0.5" />
+  <rect x="65" y="110" width="65" height="6" rx="2" fill="#fbbf24" fill-opacity="0.7" />
+  <rect x="55" y="125" width="45" height="6" rx="2" fill="#f43f5e" fill-opacity="0.7" />
+
+  <rect x="45" y="145" width="100" height="6" rx="2" fill="#38bdf8" fill-opacity="0.6" />
+  <rect x="55" y="160" width="80" height="6" rx="2" fill="#34d399" fill-opacity="0.7" />
+  <rect x="45" y="175" width="40" height="6" rx="2" fill="#64748b" fill-opacity="0.5" />
+
+  <!-- Git Graph Node Network -->
+  <g transform="translate(210, 30)">
+    <rect width="160" height="180" rx="4" fill="#040a17" stroke="#3b82f6" stroke-opacity="0.4" stroke-width="1" />
+    <text x="15" y="25" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold">GIT TREE // HEAD</text>
+    
+    <!-- Main branch line -->
+    <path d="M40 50v100" stroke="#38bdf8" stroke-width="2" />
+    <!-- Feature branch line -->
+    <path d="M40 80c30 0 50 20 50 35v35" stroke="#34d399" stroke-width="2" fill="none" />
+    <path d="M90 150c0 15-20 20-50 20" stroke="#34d399" stroke-width="2" fill="none" />
+
+    <!-- Branch Nodes -->
+    <circle cx="40" cy="50" r="5" fill="#38bdf8" stroke="#040a17" stroke-width="2" />
+    <circle cx="40" cy="80" r="5" fill="#38bdf8" stroke="#040a17" stroke-width="2" />
+    <circle cx="40" cy="120" r="5" fill="#38bdf8" stroke="#040a17" stroke-width="2" />
+    <circle cx="40" cy="170" r="6" fill="#0ea5e9" stroke="#fff" stroke-width="1.5" />
+
+    <circle cx="90" cy="115" r="5" fill="#34d399" stroke="#040a17" stroke-width="2" />
+    <circle cx="90" cy="150" r="5" fill="#34d399" stroke="#040a17" stroke-width="2" />
+
+    <text x="55" y="54" fill="#94a3b8" font-family="monospace" font-size="8">v2.4.0</text>
+    <text x="55" y="84" fill="#94a3b8" font-family="monospace" font-size="8">init_ast</text>
+    <text x="105" y="119" fill="#34d399" font-family="monospace" font-size="8">feat/bpf</text>
+    <text x="55" y="174" fill="#38bdf8" font-family="monospace" font-size="8" font-weight="bold">merge#42</text>
+  </g>
+</svg>

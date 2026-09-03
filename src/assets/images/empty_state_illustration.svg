@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" fill="none">
+  <defs>
+    <linearGradient id="emptyBg" x1="0" y1="0" x2="320" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#040b17" />
+      <stop offset="100%" stop-color="#02050d" />
+    </linearGradient>
+    <linearGradient id="cyanGlow" x1="160" y1="40" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="320" height="200" fill="url(#emptyBg)" rx="6" />
+
+  <!-- Technical grid -->
+  <path d="M20 40h280M20 80h280M20 120h280M20 160h280" stroke="#0e2238" stroke-width="1" stroke-dasharray="2 4" />
+  <path d="M40 20v160M80 20v160M120 20v160M160 20v160M200 20v160M240 20v160M280 20v160" stroke="#0e2238" stroke-width="1" stroke-dasharray="2 4" />
+
+  <!-- Center radar empty sweep target -->
+  <circle cx="160" cy="95" r="55" stroke="#0e3352" stroke-width="1.5" stroke-dasharray="4 6" />
+  <circle cx="160" cy="95" r="38" stroke="#0e3352" stroke-width="1" />
+  <circle cx="160" cy="95" r="20" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1" />
+  <circle cx="160" cy="95" r="55" fill="url(#cyanGlow)" />
+
+  <!-- Reticle crosshairs -->
+  <line x1="160" y1="30" x2="160" y2="160" stroke="#06b6d4" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="3 3" />
+  <line x1="95" y1="95" x2="225" y2="95" stroke="#06b6d4" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="3 3" />
+
+  <!-- Corner tech accents -->
+  <path d="M120 65h-10v10M200 65h10v10M120 125h-10v-10M200 125h10v-10" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round" />
+
+  <!-- Center node -->
+  <circle cx="160" cy="95" r="4" fill="#06b6d4" />
+  <circle cx="160" cy="95" r="8" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.6" />
+
+  <!-- Status indicator text -->
+  <text x="160" y="172" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="10" letter-spacing="1.5">
+    ZERO ARTIFACTS IN ACTIVE SCOPE
+  </text>
+</svg>

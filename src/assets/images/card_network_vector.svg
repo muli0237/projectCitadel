@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <defs>
+    <linearGradient id="netGrad" x1="0" y1="0" x2="400" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#050e20" />
+      <stop offset="50%" stop-color="#081838" />
+      <stop offset="100%" stop-color="#020612" />
+    </linearGradient>
+    <radialGradient id="radarGlow" cx="200" cy="120" r="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3" />
+      <stop offset="60%" stop-color="#0284c7" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="240" fill="url(#netGrad)" rx="8" />
+
+  <!-- Radar Circles -->
+  <circle cx="200" cy="120" r="90" stroke="#0ea5e9" stroke-opacity="0.2" stroke-width="1" fill="url(#radarGlow)" />
+  <circle cx="200" cy="120" r="60" stroke="#0ea5e9" stroke-opacity="0.3" stroke-width="1" />
+  <circle cx="200" cy="120" r="30" stroke="#0ea5e9" stroke-opacity="0.5" stroke-width="1" />
+  <circle cx="200" cy="120" r="3" fill="#38bdf8" />
+
+  <!-- Radar Crosshairs -->
+  <line x1="110" y1="120" x2="290" y2="120" stroke="#0ea5e9" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="2 4" />
+  <line x1="200" y1="30" x2="200" y2="210" stroke="#0ea5e9" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="2 4" />
+
+  <!-- Sweep Line -->
+  <path d="M200 120 L275 60 A90 90 0 0 0 200 30 Z" fill="#38bdf8" fill-opacity="0.15" />
+
+  <!-- Network Nodes & Targets -->
+  <g transform="translate(145, 70)">
+    <circle cx="0" cy="0" r="4" fill="#34d399" />
+    <circle cx="0" cy="0" r="8" stroke="#34d399" stroke-opacity="0.5" stroke-width="1" />
+    <text x="12" y="3" fill="#34d399" font-family="monospace" font-size="8">10.0.4.15 [SSH]</text>
+  </g>
+
+  <g transform="translate(250, 95)">
+    <circle cx="0" cy="0" r="4" fill="#38bdf8" />
+    <circle cx="0" cy="0" r="8" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1" />
+    <text x="12" y="3" fill="#38bdf8" font-family="monospace" font-size="8">10.0.4.22 [HTTPS]</text>
+  </g>
+
+  <g transform="translate(230, 165)">
+    <circle cx="0" cy="0" r="4" fill="#fbbf24" />
+    <circle cx="0" cy="0" r="8" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1" />
+    <text x="12" y="3" fill="#fbbf24" font-family="monospace" font-size="8">10.0.4.80 [SQL]</text>
+  </g>
+
+  <!-- Telemetry Header Overlay -->
+  <rect x="20" y="15" width="110" height="24" rx="2" fill="#030816" stroke="#0ea5e9" stroke-opacity="0.4" />
+  <text x="28" y="30" fill="#38bdf8" font-family="monospace" font-size="8" font-weight="bold">NET_SCAN // ACTIVE</text>
+
+  <rect x="270" y="15" width="110" height="24" rx="2" fill="#030816" stroke="#10b981" stroke-opacity="0.4" />
+  <text x="278" y="30" fill="#34d399" font-family="monospace" font-size="8" font-weight="bold">PORTS: 24/65535</text>
+</svg>

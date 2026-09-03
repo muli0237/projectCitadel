@@ -1,0 +1,68 @@
+{
+  "manifestVersion": "2.0.0",
+  "project": "Aegis Forge / Citadel Workspace Control Plane",
+  "themeInspiration": "Cleanroom original vector artwork and cybersecurity technical visual design",
+  "complianceNotice": "100% locally self-hosted assets and fonts. No remote dependencies, external CDNs, or unlicensed demo artwork. All visual diagrams and vector assets are cleanroom original SVGs designed specifically for the Citadel / Aegis Forge workspace.",
+  "assets": [
+    {
+      "id": "hero_control_plane_vector",
+      "filename": "hero_control_plane_grid.svg",
+      "type": "vector_svg",
+      "description": "CITADEL WORKSPACE / SECURITY OPERATIONS AND ENGINEERING CONTROL PLANE bounded hero grid with telemetry nodes.",
+      "intendedUse": "Workspace Dashboard Hero bounded banner and atmospheric backdrop",
+      "license": "Original Work (MIT / Project License)",
+      "author": "Aegis Forge Core Engineering",
+      "fallbackStrategy": "Multi-layer CSS radial and conic gradients with technical linear grid"
+    },
+    {
+      "id": "card_security_operations",
+      "filename": "card_secops_vector.svg",
+      "type": "vector_svg",
+      "description": "Security Operations perimeter shield matrix, vulnerability vectors, and scanning reticles.",
+      "intendedUse": "Security Operations card media region",
+      "license": "Original Work (MIT / Project License)",
+      "author": "Aegis Forge Core Engineering",
+      "fallbackStrategy": "CSS geometric shield icon with cyan-to-indigo gradient and grid pattern"
+    },
+    {
+      "id": "card_devops_control",
+      "filename": "card_devops_vector.svg",
+      "type": "vector_svg",
+      "description": "DevOps Control container mesh, isometric sandbox blocks, and automated build pipeline conduits.",
+      "intendedUse": "DevOps Control card media region",
+      "license": "Original Work (MIT / Project License)",
+      "author": "Aegis Forge Core Engineering",
+      "fallbackStrategy": "CSS isometric cube diagram with violet-to-cyan gradient and mesh pattern"
+    },
+    {
+      "id": "card_datascience_forge",
+      "filename": "card_datascience_vector.svg",
+      "type": "vector_svg",
+      "description": "Data Science Forge neural cluster graph, multidimensional tensor scatter plot, and coordinate axes.",
+      "intendedUse": "Data Science Forge card media region",
+      "license": "Original Work (MIT / Project License)",
+      "author": "Aegis Forge Core Engineering",
+      "fallbackStrategy": "CSS matrix scatter plot with emerald-to-teal gradient and coordinate axis"
+    },
+    {
+      "id": "card_development_workspace",
+      "filename": "card_code_lab_vector.svg",
+      "type": "vector_svg",
+      "description": "Development workspace AST syntax matrix and Git branch DAG topology diagram.",
+      "intendedUse": "Development / Software workspace card media region",
+      "license": "Original Work (MIT / Project License)",
+      "author": "Aegis Forge Core Engineering",
+      "fallbackStrategy": "CSS code matrix diagram with blue-to-emerald gradient and branch nodes"
+    },
+    {
+      "id": "empty_state_illustration",
+      "filename": "empty_state_illustration.svg",
+      "type": "vector_svg",
+      "description": "Tactical radar sweep reticle for empty search results, unpopulated project lists, and filtered states.",
+      "intendedUse": "Empty-state fallback illustration in workspace explorer and log streams",
+      "license": "Original Work (MIT / Project License)",
+      "author": "Aegis Forge Core Engineering",
+      "fallbackStrategy": "CSS empty reticle box with glowing cyan border and centered warning text"
+    }
+  ]
+}
