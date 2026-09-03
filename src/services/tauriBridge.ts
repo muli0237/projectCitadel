@@ -983,16 +983,6 @@ class CitadelBackendBridge {
       lastRunTimestamp: undefined,
     };
 
-    // Attempt Tauri native invoke if desktop runtime
-    if (isTauriEnvironment()) {
-      try {
-        const { invoke } = await import('@tauri-apps/api/core');
-        await invoke('register_tool', { tool: newTool });
-      } catch (e) {
-        console.warn('Tauri native register_tool failed, falling back to local storage:', e);
-      }
-    }
-
     const existingIdx = this.tools.findIndex((t) => t.id === newTool.id);
     if (existingIdx >= 0) {
       this.tools[existingIdx] = newTool;
@@ -1010,16 +1000,6 @@ class CitadelBackendBridge {
     const target = this.tools.find((t) => t.id === toolId);
     if (!target) {
       return { success: false, error: 'Tool not found in registry.' };
-    }
-
-    // Attempt Tauri native invoke if desktop runtime
-    if (isTauriEnvironment()) {
-      try {
-        const { invoke } = await import('@tauri-apps/api/core');
-        await invoke('delete_tool', { toolId });
-      } catch (e) {
-        console.warn('Tauri native delete_tool failed, falling back to local storage:', e);
-      }
     }
 
     this.tools = this.tools.filter((t) => t.id !== toolId);
@@ -1181,14 +1161,6 @@ class CitadelBackendBridge {
       return { success: false, error: `Image "${repo}:${tag}" is already available in local image cache.` };
     }
 
-    if (isTauriEnvironment()) {
-      try {
-        const { invoke } = await import('@tauri-apps/api/core');
-        await invoke('pull_container_image', { image: cleanTag, registry });
-      } catch (e) {
-        console.warn('Tauri native pull_container_image failed, falling back to simulated pull:', e);
-      }
-    }
 
     // Generate realistic image record
     const randomBytes = Array.from({ length: 40 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
@@ -1249,14 +1221,6 @@ class CitadelBackendBridge {
       isCustom: true,
     };
 
-    if (isTauriEnvironment()) {
-      try {
-        const { invoke } = await import('@tauri-apps/api/core');
-        await invoke('run_container', { config });
-      } catch (e) {
-        console.warn('Tauri native run_container failed, falling back to local runner:', e);
-      }
-    }
 
     this.containers.unshift(newContainer);
     this.persist('citadel_containers', this.containers);
@@ -1269,14 +1233,6 @@ class CitadelBackendBridge {
     const c = this.containers.find((item) => item.id === containerId);
     if (!c) return false;
 
-    if (isTauriEnvironment()) {
-      try {
-        const { invoke } = await import('@tauri-apps/api/core');
-        await invoke('container_action', { containerId, action });
-      } catch (e) {
-        console.warn('Tauri native container_action failed, falling back to local simulation:', e);
-      }
-    }
 
     if (action === 'start') {
       c.status = 'running';
@@ -1306,14 +1262,6 @@ class CitadelBackendBridge {
   }
 
   public async removeContainerImage(imageId: string): Promise<boolean> {
-    if (isTauriEnvironment()) {
-      try {
-        const { invoke } = await import('@tauri-apps/api/core');
-        await invoke('remove_container_image', { imageId });
-      } catch (e) {
-        console.warn('Tauri native remove_container_image failed:', e);
-      }
-    }
 
     this.images = this.images.filter((img) => img.id !== imageId);
     this.persist('citadel_images', this.images);

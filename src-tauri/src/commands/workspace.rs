@@ -3,6 +3,7 @@ use tauri::State;
 use crate::app_state::AppState;
 use crate::models::workspace::{ProjectRecord, WorkspaceStatus};
 use crate::services::workspace_service::WorkspaceService;
+use crate::errors::{CitadelError, Result};
 
 #[tauri::command]
 pub async fn get_workspace_status(state: State<'_, AppState>) -> Result<WorkspaceStatus, String> {
@@ -12,10 +13,24 @@ pub async fn get_workspace_status(state: State<'_, AppState>) -> Result<Workspac
 }
 
 #[tauri::command]
-pub async fn select_workspace_root(new_path: String, _state: State<'_, AppState>) -> Result<crate::models::boot::BootReport, String> {
-    let path = PathBuf::from(new_path);
-    let report = crate::services::boot_service::BootService::perform_boot_sequence(&path);
-    Ok(report)
+pub async fn select_workspace_root(new_path: String, _state: State<'_, AppState>) -> Result<crate::models::boot::BootReport> {
+    let candidate = new_path.trim();
+    if candidate.is_empty() {
+        return Err(CitadelError::WorkspaceUnavailable("Workspace path cannot be empty".into()));
+    }
+
+    let path = PathBuf::from(candidate);
+    if !path.is_absolute() {
+        return Err(CitadelError::Security("Workspace path must be absolute".into()));
+    }
+    if !path.exists() || !path.is_dir() {
+        return Err(CitadelError::WorkspaceUnavailable(format!(
+            "Workspace directory does not exist: {}", path.display()
+        )));
+    }
+
+    WorkspaceService::ensure_directories(&path)?;
+    Ok(crate::services::boot_service::BootService::perform_boot_sequence(&path))
 }
 
 #[tauri::command]

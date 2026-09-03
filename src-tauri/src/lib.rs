@@ -14,7 +14,7 @@ use services::workspace_service::WorkspaceService;
 use utils::paths::PathResolver;
 
 pub fn run() {
-    // 1. Initialize tracing subscriber for structured local logs
+    // Initialize structured local logs without allowing logger configuration to stop startup.
     let _ = tracing_subscriber::fmt()
         .with_env_filter(
             tracing_subscriber::EnvFilter::try_from_default_env()
@@ -24,24 +24,28 @@ pub fn run() {
 
     tracing::info!("Initializing Citadel Portable Operations Workspace...");
 
-    // 2. Resolve dynamic portable workspace path
     let portable_root = PathResolver::resolve_portable_root();
-    tracing::info!("Resolved portable root: {:?}", portable_root);
+    tracing::info!(root = ?portable_root, "Resolved portable root");
 
-    // 3. Ensure folder structure
-    let _ = WorkspaceService::ensure_directories(&portable_root);
+    if let Err(error) = WorkspaceService::ensure_directories(&portable_root) {
+        tracing::error!(?error, "Unable to initialize workspace directories");
+    }
 
-    // 4. Acquire exclusive process lock
     let lock_path = portable_root.join("workspace.lock");
-    let _ = WorkspaceService::acquire_lock(&lock_path);
+    if let Err(error) = WorkspaceService::acquire_lock(&lock_path) {
+        tracing::error!(?error, "Unable to acquire workspace lock; another instance may be active");
+    }
 
-    // 5. Open SQLite database
     let db_path = portable_root.join("database").join("citadel.db");
-    let db_conn = WorkspaceService::init_database(&db_path).ok();
+    let db_conn = match WorkspaceService::init_database(&db_path) {
+        Ok(connection) => Some(connection),
+        Err(error) => {
+            tracing::error!(?error, "Unable to initialize metadata database; continuing in degraded mode");
+            None
+        }
+    };
 
-    // 6. Perform initial diagnostic boot report
     let initial_boot = BootService::perform_boot_sequence(&portable_root);
-
     let state = AppState::new(portable_root, initial_boot, db_conn);
 
     tauri::Builder::default()
@@ -79,5 +83,5 @@ pub fn run() {
             commands::assets::read_workspace_asset,
         ])
         .run(tauri::generate_context!())
-        .expect("Error while running Citadel Tauri application");
+        .unwrap_or_else(|error| tracing::error!(?error, "Citadel application exited with an error"));
 }
