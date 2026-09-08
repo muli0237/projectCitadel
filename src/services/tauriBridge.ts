@@ -944,6 +944,17 @@ class CitadelBackendBridge {
       return { success: false, error: 'Binary or executable command name is required.' };
     }
 
+    if (isTauriEnvironment()) {
+      try {
+        const { invoke } = await import('@tauri-apps/api/core');
+        const data = await invoke<ToolDefinition>('register_tool', { tool: toolData });
+        this.tools.unshift(data);
+        return { success: true, data };
+      } catch (error) {
+        return { success: false, error: error instanceof Error ? error.message : String(error) };
+      }
+    }
+
     const cleanBinary = toolData.binaryName.trim();
     const cleanName = toolData.name.trim();
 
@@ -997,6 +1008,16 @@ class CitadelBackendBridge {
   }
 
   public async deleteTool(toolId: string): Promise<{ success: boolean; error?: string }> {
+    if (isTauriEnvironment()) {
+      try {
+        const { invoke } = await import('@tauri-apps/api/core');
+        await invoke<boolean>('delete_tool', { toolId });
+        this.tools = this.tools.filter((tool) => tool.id !== toolId);
+        return { success: true };
+      } catch (error) {
+        return { success: false, error: error instanceof Error ? error.message : String(error) };
+      }
+    }
     const target = this.tools.find((t) => t.id === toolId);
     if (!target) {
       return { success: false, error: 'Tool not found in registry.' };
@@ -1142,6 +1163,15 @@ class CitadelBackendBridge {
     if (!imageTag?.trim()) {
       return { success: false, error: 'Image name and tag are required.' };
     }
+    if (isTauriEnvironment()) {
+      try {
+        const { invoke } = await import('@tauri-apps/api/core');
+        await invoke('pull_container_image', { imageTag: imageTag.trim(), registry });
+        return { success: true };
+      } catch (error) {
+        return { success: false, error: error instanceof Error ? error.message : String(error) };
+      }
+    }
 
     const cleanTag = imageTag.trim();
     let repo = cleanTag;
@@ -1192,6 +1222,17 @@ class CitadelBackendBridge {
       return { success: false, error: 'Base image is required to launch container.' };
     }
 
+    if (isTauriEnvironment()) {
+      try {
+        const { invoke } = await import('@tauri-apps/api/core');
+        const container = await invoke<ContainerSummary>('run_container', { config });
+        this.containers.unshift(container);
+        return { success: true, container };
+      } catch (error) {
+        return { success: false, error: error instanceof Error ? error.message : String(error) };
+      }
+    }
+
     const cleanName = config.name.trim();
 
     // Check for name collision
@@ -1230,6 +1271,17 @@ class CitadelBackendBridge {
   }
 
   public async containerAction(containerId: string, action: 'start' | 'stop' | 'restart' | 'remove'): Promise<boolean> {
+    if (isTauriEnvironment()) {
+      try {
+        const { invoke } = await import('@tauri-apps/api/core');
+        const result = await invoke<boolean>('container_action', { containerId, action });
+        if (result && action === 'remove') this.containers = this.containers.filter((item) => item.id !== containerId);
+        return result;
+      } catch (error) {
+        console.error('Tauri container_action error:', error);
+        return false;
+      }
+    }
     const c = this.containers.find((item) => item.id === containerId);
     if (!c) return false;
 
@@ -1262,6 +1314,17 @@ class CitadelBackendBridge {
   }
 
   public async removeContainerImage(imageId: string): Promise<boolean> {
+    if (isTauriEnvironment()) {
+      try {
+        const { invoke } = await import('@tauri-apps/api/core');
+        const result = await invoke<boolean>('remove_container_image', { imageId });
+        if (result) this.images = this.images.filter((img) => img.id !== imageId);
+        return result;
+      } catch (error) {
+        console.error('Tauri remove_container_image error:', error);
+        return false;
+      }
+    }
 
     this.images = this.images.filter((img) => img.id !== imageId);
     this.persist('citadel_images', this.images);
