@@ -285,6 +285,7 @@ export const BootSequence: React.FC<BootSequenceProps> = ({
             badge="PORT.01"
             position="left"
             visible={panelsVisible}
+            reducedMotion={reducedMotion}
           >
             <DiagnosticRow
               label="WORKSPACE ROOT"
@@ -404,6 +405,7 @@ export const BootSequence: React.FC<BootSequenceProps> = ({
             badge="STBD.02"
             position="right"
             visible={panelsVisible}
+            reducedMotion={reducedMotion}
           >
             <DiagnosticRow
               label="OPERATING SYSTEM"

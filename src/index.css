@@ -86,6 +86,34 @@
   font-feature-settings: "tnum" 1;
 }
 
+/* Diagnostic cards resolve line-by-line after the panel enters the sequence. */
+@keyframes diagnostic-row-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.diagnostic-panel-rows[data-visible="true"] > * {
+  animation: diagnostic-row-reveal 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.diagnostic-panel-rows[data-visible="true"] > *:nth-child(1) { animation-delay: 120ms; }
+.diagnostic-panel-rows[data-visible="true"] > *:nth-child(2) { animation-delay: 220ms; }
+.diagnostic-panel-rows[data-visible="true"] > *:nth-child(3) { animation-delay: 320ms; }
+.diagnostic-panel-rows[data-visible="true"] > *:nth-child(4) { animation-delay: 420ms; }
+.diagnostic-panel-rows[data-visible="true"] > *:nth-child(5) { animation-delay: 520ms; }
+.diagnostic-panel-rows[data-visible="true"] > *:nth-child(6) { animation-delay: 620ms; }
+.diagnostic-panel-rows[data-visible="true"] > *:nth-child(7) { animation-delay: 720ms; }
+
+.diagnostic-panel-rows[data-reduced-motion="true"] > * {
+  animation: none;
+}
+
 /* -------------------------------------------------------------------------- */
 /* ACCESSIBILITY & FOCUS OUTLINES                                            */
 /* -------------------------------------------------------------------------- */

@@ -5,6 +5,7 @@ interface DiagnosticPanelProps {
   badge?: string;
   position: 'left' | 'right';
   visible: boolean;
+  reducedMotion?: boolean;
   children: React.ReactNode;
 }
 
@@ -13,6 +14,7 @@ export const DiagnosticPanel: React.FC<DiagnosticPanelProps> = ({
   badge,
   position,
   visible,
+  reducedMotion = false,
   children,
 }) => {
   return (
@@ -45,7 +47,11 @@ export const DiagnosticPanel: React.FC<DiagnosticPanelProps> = ({
       </div>
 
       {/* Row Contents */}
-      <div className="space-y-1">
+      <div
+        className="diagnostic-panel-rows space-y-1"
+        data-visible={visible}
+        data-reduced-motion={reducedMotion}
+      >
         {children}
       </div>
 
