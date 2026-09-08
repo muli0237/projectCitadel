@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface DiagnosticPanelProps {
   title: string;
@@ -17,6 +17,14 @@ export const DiagnosticPanel: React.FC<DiagnosticPanelProps> = ({
   reducedMotion = false,
   children,
 }) => {
+  const [revealKey, setRevealKey] = useState(0);
+
+  useEffect(() => {
+    if (visible) {
+      setRevealKey((currentKey) => currentKey + 1);
+    }
+  }, [visible]);
+
   return (
     <div
       className={`w-full max-w-[340px] xl:max-w-[380px] bg-[#08111c]/80 backdrop-blur-md border border-[#39d9ff]/25 p-4 relative overflow-hidden transition-all duration-700 select-none ${
@@ -48,6 +56,7 @@ export const DiagnosticPanel: React.FC<DiagnosticPanelProps> = ({
 
       {/* Row Contents */}
       <div
+        key={revealKey}
         className="diagnostic-panel-rows space-y-1"
         data-visible={visible}
         data-reduced-motion={reducedMotion}

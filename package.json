@@ -6,11 +6,15 @@
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --host 0.0.0.0",
+    "preview:local": "vite preview --host 127.0.0.1",
+    "check:web": "npm run lint && npm run build",
+    "check:tauri": "tauri info",
+    "tauri:dev": "tauri dev",
+    "tauri:build:debug": "tauri build --debug",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
     "tauri": "tauri",
-    "tauri:dev": "tauri dev",
     "tauri:build": "tauri build"
   },
   "dependencies": {
