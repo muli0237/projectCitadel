@@ -21,17 +21,26 @@ export const ASSET_MAP = {
 /**
  * Preload an image asset asynchronously without blocking first paint
  */
+const preloadCache = new Map<string, Promise<boolean>>();
+
 export function preloadImage(src: string): Promise<boolean> {
-  return new Promise((resolve) => {
-    if (!src) return resolve(false);
+  if (!src) return Promise.resolve(false);
+
+  const cached = preloadCache.get(src);
+  if (cached) return cached;
+
+  const promise = new Promise<boolean>((resolve) => {
     const img = new Image();
-    img.src = src;
-    if (img.complete) {
-      return resolve(true);
-    }
+    img.decoding = 'async';
+    img.crossOrigin = 'anonymous';
     img.onload = () => resolve(true);
     img.onerror = () => resolve(false);
+    img.src = src;
+    if (img.complete) resolve(img.naturalWidth > 0);
   });
+
+  preloadCache.set(src, promise);
+  return promise;
 }
 
 /**

@@ -2,6 +2,7 @@ import React from 'react';
 import tacticalVaultBg from '../../assets/images/tactical_cyber_operations_vault_1788364481127.jpg';
 import citadelHeroBg from '../../assets/images/citadel_hero_backdrop_1788363286699.jpg';
 import heroBgSvg from '../../assets/images/hero_control_plane_grid.svg';
+import { OptimizedImage } from './OptimizedImage';
 
 interface OperationsBackdropProps {
   variant?: 'hero' | 'vault';
@@ -24,9 +25,11 @@ export const OperationsBackdrop: React.FC<OperationsBackdropProps> = ({
       aria-hidden="true"
     >
       {/* 1. Photorealistic Tactical Command Center Operations Backdrop */}
-      <img
+      <OptimizedImage
         src={bgImage}
         alt="Citadel Operations Nexus"
+        loading="eager"
+        fetchPriority="high"
         referrerPolicy="no-referrer"
         style={{ opacity }}
         className="w-full h-full object-cover object-center scale-100 filter saturate-[1.20] contrast-[1.10] brightness-[1.03]"
