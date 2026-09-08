@@ -74,10 +74,10 @@ export const OverviewPanel: React.FC<OverviewPanelProps> = ({
           </div>
           <div className="absolute bottom-3 left-4">
             <h3 className="text-sm font-semibold text-white tracking-wide">
-              Citadel Tactical Enclave
+              Citadel Command Center
             </h3>
             <p className="text-[11px] font-mono text-cyan-300">
-              Host Environment: Linux 6.6.9-kali • Rootless Sandbox Active
+              Local workspace • Rootless runtime available
             </p>
           </div>
         </div>

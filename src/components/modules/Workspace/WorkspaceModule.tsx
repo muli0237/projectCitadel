@@ -179,10 +179,10 @@ export const WorkspaceModule: React.FC = () => {
           </button>
         </div>
 
-        {/* DEMO DATA / ENCLAVE SIMULATION BADGE */}
+        {/* PREVIEW DATA NOTICE */}
         <div className="flex items-center gap-2 text-[11px] font-mono">
           <span className="px-2 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400">
-            DEMO DATA // AIR-GAP ENCLAVE
+            LOCAL PREVIEW // AIR-GAP PROFILE
           </span>
         </div>
       </nav>

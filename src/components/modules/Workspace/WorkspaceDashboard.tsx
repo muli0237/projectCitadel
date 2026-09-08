@@ -116,6 +116,7 @@ export const WorkspaceDashboard: React.FC<WorkspaceDashboardProps> = ({
   onLaunchProject,
   activeProject,
 }) => {
+  const isPreview = typeof window === 'undefined' || !('.__TAURI_INTERNALS__' in window);
   const [logs, setLogs] = useState<LogEvent[]>(INITIAL_LOG_EVENTS);
   const [searchFilter, setSearchFilter] = useState('');
   const [subsystemFilter, setSubsystemFilter] = useState<string>('ALL');
@@ -247,10 +248,10 @@ export const WorkspaceDashboard: React.FC<WorkspaceDashboardProps> = ({
                 <div className="flex items-center gap-3">
                   <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 font-mono text-[11px]">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    <span>Enclave Ready</span>
+                    <span>{isPreview ? 'Workspace Ready · Preview Mode' : 'Workspace Ready · Live Host Data'}</span>
                   </span>
                   <span className="text-xs font-mono text-slate-400">
-                    Citadel v2.4 • Air-Gap Isolated
+                    {isPreview ? 'Citadel 0.1.0-preview • Web Preview' : 'Citadel 0.1.0 • Native Mode'}
                   </span>
                 </div>
 
@@ -270,7 +271,7 @@ export const WorkspaceDashboard: React.FC<WorkspaceDashboardProps> = ({
               {/* Concise Telemetry Summary */}
               <div className="grid grid-cols-2 gap-3 shrink-0 bg-[#040915]/80 p-3.5 rounded-md border border-slate-800 backdrop-blur-sm min-w-[240px]">
                 <div className="space-y-0.5">
-                  <div className="text-[10px] font-mono uppercase text-slate-400">Threat Index</div>
+                  <div className="text-[10px] font-mono uppercase text-slate-400">Threat Index {isPreview && '(preview)'}</div>
                   <div className="text-sm font-mono font-medium text-emerald-400 flex items-center gap-1.5 tabular-nums">
                     <Shield className="w-3.5 h-3.5 text-emerald-400" />
                     <span>{telemetry.threatScore.toFixed(3)} (Nominal)</span>
@@ -278,7 +279,7 @@ export const WorkspaceDashboard: React.FC<WorkspaceDashboardProps> = ({
                 </div>
 
                 <div className="space-y-0.5">
-                  <div className="text-[10px] font-mono uppercase text-slate-400">Sandboxes</div>
+                  <div className="text-[10px] font-mono uppercase text-slate-400">Sandboxes {isPreview && '(preview)'}</div>
                   <div className="text-sm font-mono font-medium text-cyan-300 flex items-center gap-1.5 tabular-nums">
                     <Container className="w-3.5 h-3.5 text-cyan-400" />
                     <span>{telemetry.activeSandboxes} Running</span>
@@ -286,14 +287,14 @@ export const WorkspaceDashboard: React.FC<WorkspaceDashboardProps> = ({
                 </div>
 
                 <div className="space-y-0.5 pt-2 border-t border-slate-800/80">
-                  <div className="text-[10px] font-mono uppercase text-slate-400">Memory Buffer</div>
+                  <div className="text-[10px] font-mono uppercase text-slate-400">Memory Buffer {isPreview && '(preview)'}</div>
                   <div className="text-xs font-mono text-slate-200 tabular-nums">
                     {telemetry.memoryUsageMb} MiB / 2048 MiB
                   </div>
                 </div>
 
                 <div className="space-y-0.5 pt-2 border-t border-slate-800/80">
-                  <div className="text-[10px] font-mono uppercase text-slate-400">CPU Load</div>
+                  <div className="text-[10px] font-mono uppercase text-slate-400">CPU Load {isPreview && '(preview)'}</div>
                   <div className="text-xs font-mono text-slate-200 tabular-nums">
                     {telemetry.cpuLoadPct}%
                   </div>
@@ -366,7 +367,7 @@ export const WorkspaceDashboard: React.FC<WorkspaceDashboardProps> = ({
 
             <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
               <p className="text-xs text-slate-300 leading-relaxed">
-                Penetration testing arsenal, network map captures, and compliance auditors.
+                Authorized security tools, network evidence, and local audit notes.
               </p>
 
               <div className="space-y-2 pt-2 border-t border-slate-800/80">
@@ -414,7 +415,7 @@ export const WorkspaceDashboard: React.FC<WorkspaceDashboardProps> = ({
 
             <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
               <p className="text-xs text-slate-300 leading-relaxed">
-                Rootless Podman sandbox daemons and isolated pipeline worktrees.
+                Local containers, compose files, and repeatable development environments.
               </p>
 
               <div className="space-y-2 pt-2 border-t border-slate-800/80">
@@ -462,7 +463,7 @@ export const WorkspaceDashboard: React.FC<WorkspaceDashboardProps> = ({
 
             <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
               <p className="text-xs text-slate-300 leading-relaxed">
-                Jupyter notebooks, dataset caching, and local scientific computation.
+                Local datasets, notebooks, and repeatable analysis workflows.
               </p>
 
               <div className="space-y-2 pt-2 border-t border-slate-800/80">
